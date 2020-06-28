@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/public_part_navigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="pro.devapp.navigation.ui.screens.signIn.SignInFragment"
+        android:label="sign_in_fragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_private_part_navigation"
+            app:destination="@id/private_part_navigation"
+            app:popUpTo="@id/public_part_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="pro.devapp.navigation.ui.screens.signUp.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_confirmScreen"
+            app:destination="@id/confirmScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmScreen"
+        android:name="pro.devapp.navigation.ui.screens.confirm.ConfirmFragment"
+        android:label="screen_confirm"
+        tools:layout="@layout/fragment_confirm">
+        <action
+            android:id="@+id/action_confirmScreen_to_private_part_navigation"
+            app:destination="@id/private_part_navigation"
+            app:popUpTo="@id/public_part_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <include app:graph="@navigation/private_part_navigation" />
+</navigation>
